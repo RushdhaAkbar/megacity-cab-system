@@ -18,7 +18,7 @@ public class UserServiceTest extends TestCase {
 
     protected void setUp() throws Exception {
         MockitoAnnotations.openMocks(this);
-        userService = new UserService();
+        userService = new UserService(userDAO);
     }
 
     public void testValidateUser_Success() {
