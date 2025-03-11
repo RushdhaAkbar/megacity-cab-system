@@ -23,10 +23,12 @@ public class CustomerController extends HttpServlet {
     public CustomerController() {
         super();
         // TODO Auto-generated constructor stub
+        this.customerService = new CustomerService(); 
     }
 
-	public CustomerController(CustomerService customerService2) {
+	public CustomerController(CustomerService customerService) {
 		// TODO Auto-generated constructor stub
+		this.customerService = new CustomerService(); 
 	}
 
 	/**
@@ -47,7 +49,7 @@ public class CustomerController extends HttpServlet {
 
 	public String registerCustomer(Customer customer) {
 		// TODO Auto-generated method stub
-		return null;
+		return customerService.registerCustomer(customer);
 	}
 
 }

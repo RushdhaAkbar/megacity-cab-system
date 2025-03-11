@@ -16,11 +16,11 @@ public class CustomerControllerTest extends TestCase {
     private CustomerController customerController;
     
     @Mock
-    private CustomerService customerService; // Mock the service layer
+    private CustomerService customerService; 
 
     protected void setUp() throws Exception {
-       
-        customerController = new CustomerController(customerService); // Create controller instance
+    	MockitoAnnotations.openMocks(this);
+        customerController = new CustomerController(customerService); 
     }
 
     public void testRegisterCustomer_Success() {

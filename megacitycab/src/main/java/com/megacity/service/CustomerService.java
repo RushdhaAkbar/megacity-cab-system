@@ -6,7 +6,7 @@ public class CustomerService {
 
 	public String registerCustomer(Customer customer) {
 		// TODO Auto-generated method stub
-		return null;
+		return "Customer Registered Successfully!";
 	}
 
 }
