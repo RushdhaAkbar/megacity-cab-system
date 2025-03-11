@@ -6,30 +6,29 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.megacity.model.User;
+import com.megacity.dao.DBConnectionFactory;
 
 public class UserDAO {
 
-    private Connection connection;
-
-    public UserDAO(Connection connection) {
-        this.connection = connection;
-    }
-
     public User getUserByEmail(String email) {
-        String query = "SELECT * FROM user WHERE email = ?";
-        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-            preparedStatement.setString(1, email);
-            ResultSet resultSet = preparedStatement.executeQuery();
+        String query = "SELECT * FROM User WHERE email = ?";
+        User user = null;
 
-            if (resultSet.next()) {
-                User user = new User();
-                user.setEmail(resultSet.getString("email"));
-                user.setPassword(resultSet.getString("password")); 
-                return user;
+        try (Connection connection = DBConnectionFactory.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            
+            preparedStatement.setString(1, email);
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    user = new User();
+                    user.setUserID(resultSet.getInt("userID")); 
+                    user.setEmail(resultSet.getString("email"));
+                    user.setPassword(resultSet.getString("password")); 
+                }
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return null; 
+        return user; 
     }
 }

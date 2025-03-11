@@ -100,7 +100,7 @@
         </header>
 
         <div class="buttons-container">
-            <a href="login.jsp" class="button">Login</a>
+            <a href="login?action=login" class="button">Login</a>
             <a href="customer?action=add" class="button secondary">Register</a>
         </div>
         

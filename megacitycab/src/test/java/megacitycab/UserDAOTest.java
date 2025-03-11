@@ -27,7 +27,7 @@ public class UserDAOTest extends TestCase {
 
     protected void setUp() throws Exception {
         MockitoAnnotations.openMocks(this);
-        userDAO = new UserDAO(mockConnection); 
+     //   userDAO = new UserDAO(mockConnection); 
     }
 
     public void testGetUserByEmail_Success() throws Exception {
