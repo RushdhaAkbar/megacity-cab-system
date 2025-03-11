@@ -1,0 +1,5 @@
+com\megacity\model\Customer.class
+com\megacity\model\User.class
+com\megacity\controller\CustomerController.class
+com\megacity\dao\CustomerDAO.class
+com\megacity\service\CustomerService.class
