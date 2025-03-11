@@ -8,8 +8,25 @@ public class Customer extends User {
 			String phoneNumber) {
 		super(userID, NIC, name, email, password);
 		// TODO Auto-generated constructor stub
-		this.address=address;
-		this.phoneNumber=phoneNumber;
+		this.setAddress(address);
+		this.setPhoneNumber(phoneNumber);
+	}
+ 
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
 	}
 	
 

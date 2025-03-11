@@ -5,14 +5,14 @@
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
   <servlet>
-  	<servlet-name>CustomerContoller</servlet-name>
-  	<display-name>CustomerContoller</display-name>
+  	<servlet-name>CustomerController</servlet-name>
+  	<display-name>CustomerController</display-name>
   	<description></description>
-  	<servlet-class>com.icbt.controller.CustomerContoller</servlet-class>
+  	<servlet-class>com.megacity.controller.CustomerController</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>CustomerContoller</servlet-name>
-  	<url-pattern>/Customer</url-pattern>
+  	<servlet-name>CustomerController</servlet-name>
+  	<url-pattern>/customer</url-pattern>
   </servlet-mapping>
   
 </web-app>

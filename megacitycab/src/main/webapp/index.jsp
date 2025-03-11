@@ -101,7 +101,7 @@
 
         <div class="buttons-container">
             <a href="login.jsp" class="button">Login</a>
-            <a href="register.jsp" class="button secondary">Register</a>
+            <a href="customer?action=add" class="button secondary">Register</a>
         </div>
         
         <footer>
