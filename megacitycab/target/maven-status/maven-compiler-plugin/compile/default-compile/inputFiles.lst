@@ -2,6 +2,8 @@ C:\Users\rushd\git\repository\megacitycab\src\main\java\com\megacity\controller\
 C:\Users\rushd\git\repository\megacitycab\src\main\java\com\megacity\dao\CustomerDAO.java
 C:\Users\rushd\git\repository\megacitycab\src\main\java\com\megacity\dao\DBConnection.java
 C:\Users\rushd\git\repository\megacitycab\src\main\java\com\megacity\dao\DBConnectionFactory.java
+C:\Users\rushd\git\repository\megacitycab\src\main\java\com\megacity\dao\UserDAO.java
 C:\Users\rushd\git\repository\megacitycab\src\main\java\com\megacity\model\Customer.java
 C:\Users\rushd\git\repository\megacitycab\src\main\java\com\megacity\model\User.java
 C:\Users\rushd\git\repository\megacitycab\src\main\java\com\megacity\service\CustomerService.java
+C:\Users\rushd\git\repository\megacitycab\src\main\java\com\megacity\service\UserService.java
