@@ -62,12 +62,20 @@ public class LoginController extends HttpServlet {
         if (user != null) {
             HttpSession session = request.getSession();
             session.setAttribute("loggedInUser", user);
-            request.getRequestDispatcher("WEB-INF/view/dashboard.jsp").forward(request, response);
+
+           
+            if ("admin@gmail.com".equals(email)) {
+              
+            	 request.getRequestDispatcher("/WEB-INF/view/adminDashboard.jsp").forward(request, response);
+            } else {
+                response.sendRedirect("dashboard.jsp");
+            }
         } else {
             request.setAttribute("errorMessage", "Invalid email or password!");
             request.getRequestDispatcher("WEB-INF/view/login.jsp").forward(request, response);
         }
     }
+
 
     private void logout(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession(false);

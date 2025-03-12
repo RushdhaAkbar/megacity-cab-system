@@ -1,7 +1,14 @@
-com\megacity\dao\DBConnectionFactory.class
+com\megacity\controller\CarController.class
+com\megacity\service\CarService.class
 com\megacity\controller\CustomerController.class
+com\megacity\dao\CarDAO.class
 com\megacity\dao\DBConnection.class
-com\megacity\service\CustomerService.class
 com\megacity\model\Customer.class
 com\megacity\model\User.class
+com\megacity\dao\UserDAO.class
+com\megacity\model\Car.class
+com\megacity\dao\DBConnectionFactory.class
+com\megacity\service\UserService.class
+com\megacity\service\CustomerService.class
+com\megacity\controller\LoginController.class
 com\megacity\dao\CustomerDAO.class

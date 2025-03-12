@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: megacitycab.CustomerControllerTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.859 s -- in megacitycab.CustomerControllerTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.071 s - in megacitycab.CustomerControllerTest
