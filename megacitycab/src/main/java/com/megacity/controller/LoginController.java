@@ -1,6 +1,8 @@
 package com.megacity.controller;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -27,6 +29,7 @@ public class LoginController extends HttpServlet {
 
     public void init() throws ServletException {
         userService = UserService.getInstance();
+        carService = CarService.getInstance();
         
     }
 
@@ -42,7 +45,12 @@ public class LoginController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
         if (action != null && action.equals("login")) {
-            login(request, response);
+            try {
+				login(request, response);
+			} catch (ServletException | IOException | SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
         } else {
             doGet(request, response);
         }
@@ -52,7 +60,7 @@ public class LoginController extends HttpServlet {
         request.getRequestDispatcher("WEB-INF/view/login.jsp").forward(request, response);
     }
 
-    private void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    private void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
@@ -73,10 +81,10 @@ public class LoginController extends HttpServlet {
               
             	 request.getRequestDispatcher("/WEB-INF/view/adminDashboard.jsp").forward(request, response);
             } else {
-            	if (carService == null) {
-            	    carService = new CarService();
-            	}
-            	List<Car> carList = carService.getAllCars();
+            	
+            	List<Car> carList = new ArrayList<Car>();
+            	carList = carService.getAllCars();
+            	request.setAttribute("cars", carList);
             	request.getRequestDispatcher("/WEB-INF/view/dashboard.jsp").forward(request, response);
             }
         } else {

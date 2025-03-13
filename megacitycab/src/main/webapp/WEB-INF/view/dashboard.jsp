@@ -76,16 +76,15 @@
     <h2>Available Cars</h2>
 
     <c:choose>
-        <c:when test="${not empty carList}">
-            <c:forEach var="car" items="${carList}">
+        <c:when test="${not empty cars}">
+            <c:forEach var="car" items="${cars}">
                 <div class="cab-card">
                     <div class="cab-details">
-                        <p><strong>Car ID:</strong> ${car.id}</p>
                         <p><strong>Model:</strong> ${car.carModel}</p>
                         <p><strong>Color:</strong> ${car.color}</p>
                         <p><strong>Seats Available:</strong> ${car.noOfSeats}</p>
                     </div>
-                    <button class="book-button" onclick="window.location.href='bookCar?carId=${car.id}'">Book Now</button>
+                    <button class="book-button"">Book Now</button>
                 </div>
             </c:forEach>
         </c:when>
