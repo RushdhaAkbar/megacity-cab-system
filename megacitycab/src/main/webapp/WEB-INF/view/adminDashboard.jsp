@@ -16,55 +16,78 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            flex-direction: column;
         }
+
         .container {
-            width: 800px;
+            width: 500px;
             background-color: white;
             padding: 30px;
             border-radius: 10px;
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            text-align: center;
         }
+
         h1 {
             text-align: center;
             color: #333;
             margin-bottom: 30px;
             font-size: 28px;
         }
-        .btn-primary {
-            width: 200px;
-            padding: 16px;
-            background-color: #007BFF;
-            color: white;
+
+        .btn-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 14px;
             font-size: 18px;
+            font-weight: bold;
             border: none;
             border-radius: 6px;
             cursor: pointer;
-            margin-bottom: 30px;
+            transition: background-color 0.3s ease;
         }
-        .btn-primary:hover {
+
+        .btn-manage-cars {
+            background-color: #007BFF;
+            color: white;
+        }
+
+        .btn-manage-cars:hover {
             background-color: #0056b3;
         }
-          .action-btn {
-            padding: 10px 20px;
+
+        .btn-manage-drivers {
             background-color: #28a745;
             color: white;
-            border: none;
-            cursor: pointer;
         }
-        .action-btn:hover {
+
+        .btn-manage-drivers:hover {
             background-color: #218838;
         }
-        
-        
+
+        .btn-logout {
+            background-color: #dc3545;
+            color: white;
+            margin-top: 20px;
+        }
+
+        .btn-logout:hover {
+            background-color: #c82333;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Admin Dashboard</h1>
-       <button class="action-btn" onclick="location.href='car?action=list'">Manage Cars</button>
-
-        
+        <div class="btn-container">
+            <button class="btn btn-manage-cars" onclick="location.href='car?action=list'">Manage Cars</button>
+            <button class="btn btn-manage-drivers" onclick="location.href='driver?action=list'">Manage Drivers</button>
+            <button class="btn btn-logout" onclick="location.href='logout.jsp'">Logout</button>
+        </div>
     </div>
 </body>
 </html>

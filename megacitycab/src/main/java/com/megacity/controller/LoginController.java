@@ -1,6 +1,8 @@
 package com.megacity.controller;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 
 import javax.servlet.http.HttpServlet;
@@ -8,7 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.megacity.model.Car;
 import com.megacity.model.User;
+import com.megacity.service.CarService;
 import com.megacity.service.UserService;
 
 
@@ -16,13 +20,14 @@ public class LoginController extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     private UserService userService;
-
+    private CarService carService;
     public LoginController() {
         super();
     }
 
     public void init() throws ServletException {
         userService = UserService.getInstance();
+        
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -68,7 +73,11 @@ public class LoginController extends HttpServlet {
               
             	 request.getRequestDispatcher("/WEB-INF/view/adminDashboard.jsp").forward(request, response);
             } else {
-                response.sendRedirect("dashboard.jsp");
+            	if (carService == null) {
+            	    carService = new CarService();
+            	}
+            	List<Car> carList = carService.getAllCars();
+            	request.getRequestDispatcher("/WEB-INF/view/dashboard.jsp").forward(request, response);
             }
         } else {
             request.setAttribute("errorMessage", "Invalid email or password!");

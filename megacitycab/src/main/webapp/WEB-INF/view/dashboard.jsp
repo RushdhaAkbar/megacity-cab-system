@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Customer Dashboard</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -17,39 +17,39 @@
             background-color: #4CAF50;
             color: white;
             padding: 10px 20px;
-            text-align: right;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
         .navbar a {
             color: white;
             text-decoration: none;
-            margin-left: 20px;
             font-size: 16px;
         }
         .dashboard-container {
             padding: 20px;
-            max-width: 1000px;
+            max-width: 800px;
             margin: 20px auto;
             background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .dashboard-container h2 {
             text-align: center;
         }
         .cab-card {
             border: 1px solid #ddd;
             padding: 15px;
-            margin: 10px;
+            margin: 10px 0;
             border-radius: 5px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            background: #f9f9f9;
         }
         .cab-card p {
             margin: 5px 0;
         }
         .book-button {
-            background-color: #4CAF50;
+            background-color: #007BFF;
             color: white;
             padding: 10px 20px;
             border: none;
@@ -57,7 +57,11 @@
             cursor: pointer;
         }
         .book-button:hover {
-            background-color: #45a049;
+            background-color: #0056b3;
+        }
+        .no-cars {
+            color: #888;
+            font-size: 18px;
         }
     </style>
 </head>
@@ -69,28 +73,27 @@
 </div>
 
 <div class="dashboard-container">
-    <h2>Available Cabs</h2>
+    <h2>Available Cars</h2>
 
-    
-    <div class="cab-card">
-        <div class="cab-details">
-            <p><strong>Cab ID:</strong> 101</p>
-            <p><strong>Model:</strong> Toyota Prius</p>
-            <p><strong>Available Seats:</strong> 4</p>
-        </div>
-        <button class="book-button" onclick="window.location.href='bookCab?cabId=101'">Book Now</button>
-    </div>
+    <c:choose>
+        <c:when test="${not empty carList}">
+            <c:forEach var="car" items="${carList}">
+                <div class="cab-card">
+                    <div class="cab-details">
+                        <p><strong>Car ID:</strong> ${car.id}</p>
+                        <p><strong>Model:</strong> ${car.carModel}</p>
+                        <p><strong>Color:</strong> ${car.color}</p>
+                        <p><strong>Seats Available:</strong> ${car.noOfSeats}</p>
+                    </div>
+                    <button class="book-button" onclick="window.location.href='bookCar?carId=${car.id}'">Book Now</button>
+                </div>
+            </c:forEach>
+        </c:when>
+        <c:otherwise>
+            <p class="no-cars">No cars available at the moment.</p>
+        </c:otherwise>
+    </c:choose>
 
-    <div class="cab-card">
-        <div class="cab-details">
-            <p><strong>Cab ID:</strong> 102</p>
-            <p><strong>Model:</strong> Honda Civic</p>
-            <p><strong>Available Seats:</strong> 2</p>
-        </div>
-        <button class="book-button" onclick="window.location.href='bookCab?cabId=102'">Book Now</button>
-    </div>
-
-   
 </div>
 
 </body>
