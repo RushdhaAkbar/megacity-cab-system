@@ -13,29 +13,37 @@ import com.megacity.model.Car;
 public class CarDAO {
 
     
-    public void addCar(Car car) {
-        String query = "INSERT INTO Car (carModel, color, availability, noOfSeats) VALUES (?, ?, ?, ?)";
-        Connection connection = null;
+	public void addCar(Car car) {
+	    String query = "INSERT INTO car (carModel, color, availability, noOfSeats) VALUES (?, ?, ?, ?)";
+	    Connection connection=null;
         PreparedStatement statement = null;
+	    try {
+	    	 connection = DBConnectionFactory.getConnection();
+	         statement = connection.prepareStatement(query); 
 
-        try {
-            connection = DBConnectionFactory.getConnection();
-            statement = connection.prepareStatement(query);
-            statement.setString(1, car.getCarModel());
-            statement.setString(2, car.getColor());
-            statement.setBoolean(3, car.getAvailability()); 
-            statement.setInt(4, car.getNoOfSeats());
-            statement.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                if (statement != null) statement.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-    }
+	        statement.setString(1, car.getCarModel());
+	        statement.setString(2, car.getColor());
+	        statement.setString(3, car.getAvailability());
+	        statement.setInt(4, car.getNoOfSeats());
+
+	        statement.executeUpdate();
+	    }
+	        catch (SQLException e) 
+	        {
+	            e.printStackTrace();
+	        }
+	        finally
+	        {
+	        	try {
+					statement.close();
+				} catch (SQLException e) {
+					
+					e.printStackTrace();
+				}
+	        }
+	}
+
+
 
     
     public List<Car> getAllCars() throws SQLException {
@@ -50,7 +58,7 @@ public class CarDAO {
             int carID = resultSet.getInt("carID");
             String carModel = resultSet.getString("carModel");
             String color = resultSet.getString("color");
-            boolean availability = resultSet.getBoolean("availability");
+            String availability = resultSet.getString("availability");
             int noOfSeats = resultSet.getInt("noOfSeats");
 
             cars.add(new Car(carID, carModel, color, availability, noOfSeats));
@@ -74,7 +82,7 @@ public class CarDAO {
         if (resultSet.next()) {
             String carModel = resultSet.getString("carModel");
             String color = resultSet.getString("color");
-            boolean availability = resultSet.getBoolean("availability");
+            String availability = resultSet.getString("availability");
             int noOfSeats = resultSet.getInt("noOfSeats");
 
             car = new Car(carID, carModel, color, availability, noOfSeats);
@@ -96,7 +104,7 @@ public class CarDAO {
             statement = connection.prepareStatement(query);
             statement.setString(1, car.getCarModel());
             statement.setString(2, car.getColor());
-            statement.setBoolean(3, car.getAvailability()); 
+            statement.setString(3, car.getAvailability()); 
             statement.setInt(4, car.getNoOfSeats());
             statement.setInt(5, car.getCarID());
             statement.executeUpdate();

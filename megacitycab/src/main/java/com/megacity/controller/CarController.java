@@ -85,7 +85,7 @@ public class CarController extends HttpServlet {
     private void addCar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String carModel = request.getParameter("carModel");
         String color = request.getParameter("color");
-        boolean availability = Boolean.parseBoolean(request.getParameter("availability"));
+        String availability = request.getParameter("availability");
         int noOfSeats = Integer.parseInt(request.getParameter("noOfSeats"));
 
         Car car = new Car();
@@ -121,7 +121,7 @@ public class CarController extends HttpServlet {
         int carID = Integer.parseInt(request.getParameter("carID"));
         String carModel = request.getParameter("carModel");
         String color = request.getParameter("color");
-        boolean availability = Boolean.parseBoolean(request.getParameter("availability"));
+        String availability = request.getParameter("availability");
         int noOfSeats = Integer.parseInt(request.getParameter("noOfSeats"));
 
         Car car = new Car();

@@ -4,10 +4,10 @@ public class Car {
 	private int carID;
 	private String carModel;
 	private String color;
-	private Boolean availability;
+	private String availability;
 	private int noOfSeats;
 	
-	public Car(int carID, String carModel, String color, Boolean availability, int noOfSeats) {
+	public Car(int carID, String carModel, String color, String availability, int noOfSeats) {
 		this.carID = carID;
 		this.carModel = carModel;
 		this.color = color;
@@ -15,7 +15,7 @@ public class Car {
 		this.noOfSeats = noOfSeats;
 	}
 
-	public Car(String carModel, String color, Boolean availability, int noOfSeats) {
+	public Car(String carModel, String color, String availability, int noOfSeats) {
 		this.carModel = carModel;
 		this.color = color;
 		this.availability = availability;
@@ -50,11 +50,11 @@ public class Car {
 		this.color = color;
 	}
 
-	public Boolean getAvailability() {
+	public String getAvailability() {
 		return availability;
 	}
 
-	public void setAvailability(Boolean availability) {
+	public void setAvailability(String availability) {
 		this.availability = availability;
 	}
 

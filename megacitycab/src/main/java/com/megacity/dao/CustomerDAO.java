@@ -57,7 +57,7 @@ public class CustomerDAO {
 	            try {
 	                if (userStmt != null) userStmt.close();
 	                if (customerStmt != null) customerStmt.close();
-	                if (connection != null) connection.close();
+	               // if (connection != null) connection.close();
 	            } catch (SQLException e) {
 	                e.printStackTrace();
 	            }

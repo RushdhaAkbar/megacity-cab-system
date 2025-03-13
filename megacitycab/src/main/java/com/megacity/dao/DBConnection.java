@@ -12,8 +12,11 @@ public class DBConnection {
 
 	private static DBConnection instance;
 	private Connection connection;
+	 private DBConnection() {
+	        connect();
+	    }
 
-	private DBConnection() {
+	private void connect() {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			this.connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
@@ -34,6 +37,13 @@ public class DBConnection {
 	}
 
 	public Connection getConnection() {
-		return connection;
-	}
+        try {
+            if (connection == null || connection.isClosed()) { 
+                connect();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return connection;
+    }
 }
