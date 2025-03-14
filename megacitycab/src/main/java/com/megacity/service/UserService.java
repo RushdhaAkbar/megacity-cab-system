@@ -37,4 +37,8 @@ public class UserService {
 
         return null;
     }
+    
+    public int getUserIDByEmail(String email) {
+        return userDAO.getUserIDByEmail(email);
+    }
 }

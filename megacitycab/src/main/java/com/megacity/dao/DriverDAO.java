@@ -84,31 +84,16 @@ public class DriverDAO {
         return driver;
     }
 
-    public void updateDriver(Driver driver) {
-        String query = "UPDATE driver SET name = ?, licenseNumber = ?, availability = ?, phoneNumber = ? WHERE driverID = ?";
-        Connection connection = null;
-        PreparedStatement statement = null;
+    public void updateDriverAvailability(int driverID, String availability) throws SQLException {
+        Connection connection = DBConnectionFactory.getConnection();
+        String query = "UPDATE driver SET availability=? WHERE driverID=?";
 
-        try {
-            connection = DBConnectionFactory.getConnection();
-            statement = connection.prepareStatement(query);
-            statement.setString(1, driver.getName());
-            statement.setString(2, driver.getLicenseNumber());
-            statement.setString(3, driver.getAvailability());
-            statement.setString(4, driver.getPhoneNumber());
-            statement.setInt(5, driver.getDriverID());
-            statement.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                if (statement != null) statement.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+        	statement.setString(1, availability);
+        	statement.setInt(2, driverID);
+        	statement.executeUpdate();
         }
     }
-
     public void deleteDriver(int driverID) {
         String query = "DELETE FROM driver WHERE driverID = ?";
         Connection connection = null;

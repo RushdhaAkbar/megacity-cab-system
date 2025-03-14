@@ -1,14 +1,47 @@
 package com.megacity.service;
 
+import com.megacity.dao.BookingDAO;
 import com.megacity.model.Booking;
-import java.util.ArrayList;
+
+import java.sql.SQLException;
 import java.util.List;
 
 public class BookingService {
-    private List<Booking> bookings = new ArrayList<>();
+    private static BookingService instance;
+    private BookingDAO bookingDAO;
 
-    public Booking createBooking(Booking booking) {
-        bookings.add(booking);
-        return booking; 
+    private BookingService() {
+        bookingDAO = new BookingDAO();
+    }
+
+    public static BookingService getInstance() {
+        if (instance == null) {
+            synchronized (CarService.class) {
+                if (instance == null) {
+                    instance = new BookingService();
+                }
+            }
+        }
+        return instance;
+    }
+
+    public void createBooking(Booking booking)  {
+        bookingDAO.createBooking(booking);
+    }
+
+    public List<Booking> getAllBookings() throws SQLException {
+        return bookingDAO.getAllBookings();
+    }
+
+    public List<Booking> getBookingsByUser(int userID) throws SQLException {
+        return bookingDAO.getBookingsByUser(userID);
+    }
+
+    public Booking getBookingById(int bookingID) throws SQLException {
+        return bookingDAO.getBookingById(bookingID);
+    }
+
+    public void assignDriver(int bookingId, int driverID) throws SQLException {
+        bookingDAO.assignDriver(bookingId, driverID);
     }
 }

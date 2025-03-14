@@ -112,26 +112,26 @@ public class DriverController extends HttpServlet {
     }
 
     private void updateDriver(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int driverID = Integer.parseInt(request.getParameter("driverID"));
-        String name = request.getParameter("name");
-        String licenseNumber = request.getParameter("licenseNumber");
-        String availability = request.getParameter("availability");
-        String phoneNumber = request.getParameter("phoneNumber");
-
-        Driver driver = new Driver();
-        driver.setDriverID(driverID);
-        driver.setName(name);
-        driver.setLicenseNumber(licenseNumber);
-        driver.setAvailability(availability);
-        driver.setPhoneNumber(phoneNumber);
-
-        try {
-            driverService.updateDriver(driver);
-            response.sendRedirect("driver?action=view&driverID=" + driverID);
-        } catch (Exception e) {
-            request.setAttribute("errorMessage", e.getMessage());
-            request.getRequestDispatcher("/WEB-INF/view/error.jsp").forward(request, response);
-        }
+//        int driverID = Integer.parseInt(request.getParameter("driverID"));
+//        String name = request.getParameter("name");
+//        String licenseNumber = request.getParameter("licenseNumber");
+//        String availability = request.getParameter("availability");
+//        String phoneNumber = request.getParameter("phoneNumber");
+//
+//        Driver driver = new Driver();
+//        driver.setDriverID(driverID);
+//        driver.setName(name);
+//        driver.setLicenseNumber(licenseNumber);
+//        driver.setAvailability(availability);
+//        driver.setPhoneNumber(phoneNumber);
+//
+//        try {
+//            driverService.updateDriver(driver);
+//            response.sendRedirect("driver?action=view&driverID=" + driverID);
+//        } catch (Exception e) {
+//            request.setAttribute("errorMessage", e.getMessage());
+//            request.getRequestDispatcher("/WEB-INF/view/error.jsp").forward(request, response);
+//        }
     }
 
     private void deleteDriver(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

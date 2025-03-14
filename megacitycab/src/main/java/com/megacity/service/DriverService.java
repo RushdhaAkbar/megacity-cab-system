@@ -38,8 +38,8 @@ public class DriverService {
         return driverDAO.getDriverById(driverID);
     }
 
-    public void updateDriver(Driver driver) {
-        driverDAO.updateDriver(driver);
+    public void updateDriverAvailability(int driverID, String availability) throws SQLException {
+         driverDAO.updateDriverAvailability(driverID,availability);
     }
 
     public void deleteDriver(int driverID) {

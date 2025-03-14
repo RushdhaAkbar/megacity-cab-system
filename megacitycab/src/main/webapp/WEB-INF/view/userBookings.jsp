@@ -4,8 +4,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Customer Dashboard</title>
+    <title>My Bookings</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -35,31 +34,15 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             text-align: center;
         }
-        .cab-card {
+        .booking-card {
             border: 1px solid #ddd;
             padding: 15px;
             margin: 10px 0;
             border-radius: 5px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
             background: #f9f9f9;
+            text-align: left;
         }
-        .cab-card p {
-            margin: 5px 0;
-        }
-        .book-button {
-            background-color: #007BFF;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .book-button:hover {
-            background-color: #0056b3;
-        }
-        .no-cars {
+        .no-bookings {
             color: #888;
             font-size: 18px;
         }
@@ -69,32 +52,29 @@
 
 <div class="navbar">
     <span>Welcome, ${loggedInUser.email}</span>
+    <a href="dashboard.jsp">Dashboard</a>
     <a href="logout.jsp">Logout</a>
-     <a href="booking?action=list" class="book-button" style="background-color: #28a745;">My Bookings</a>
 </div>
 
 <div class="dashboard-container">
-    <h2>Available Cars</h2>
+    <h2>My Bookings</h2>
 
     <c:choose>
-        <c:when test="${not empty cars}">
-            <c:forEach var="car" items="${cars}">
-                <div class="cab-card">
-                    <div class="cab-details">
-                        <p><strong>Model:</strong> ${car.carModel}</p>
-                        <p><strong>Color:</strong> ${car.color}</p>
-                        <p><strong>Seats Available:</strong> ${car.noOfSeats}</p>
-                    </div>
-                    <a href="booking?action=create&carID=${car.carID}" class="book-button">Book Now</a>
-
+        <c:when test="${not empty bookings}">
+            <c:forEach var="booking" items="${bookings}">
+                <div class="booking-card">
+                    <p><strong>Car ID:</strong> ${booking.carID}</p>
+                    <p><strong>Pickup:</strong> ${booking.pickup}</p>
+                    <p><strong>Destination:</strong> ${booking.destination}</p>
+                    <p><strong>Fare:</strong> ${booking.fare}</p>
+                    <p><strong>Status:</strong> ${booking.status}</p>
                 </div>
             </c:forEach>
         </c:when>
         <c:otherwise>
-            <p class="no-cars">No cars available at the moment.</p>
+            <p class="no-bookings">No bookings found.</p>
         </c:otherwise>
     </c:choose>
-
 </div>
 
 </body>

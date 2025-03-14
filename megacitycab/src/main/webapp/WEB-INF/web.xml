@@ -16,7 +16,7 @@
   	<description></description>
   	<servlet-class>com.megacity.controller.LoginController</servlet-class>
   </servlet>
-  <servlet>
+  <servlet id="Servlet_1741898987800">
   	<servlet-name>CarController</servlet-name>
   	<display-name>CarController</display-name>
   	<description></description>
@@ -27,6 +27,12 @@
   	<display-name>DriverController</display-name>
   	<description></description>
   	<servlet-class>com.megacity.controller.DriverController</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>BookingController</servlet-name>
+  	<display-name>BookingController</display-name>
+  	<description></description>
+  	<servlet-class>com.megacity.controller.BookingController</servlet-class>
   </servlet>
   <servlet-mapping>
   	<servlet-name>CustomerController</servlet-name>
@@ -43,6 +49,10 @@
   <servlet-mapping>
   	<servlet-name>DriverController</servlet-name>
   	<url-pattern>/driver</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>BookingController</servlet-name>
+  	<url-pattern>/booking</url-pattern>
   </servlet-mapping>
  
   
