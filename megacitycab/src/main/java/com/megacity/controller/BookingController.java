@@ -24,7 +24,8 @@ public class BookingController extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private BookingService bookingService;
     private CarService carService;
-
+    private DriverService driverService;
+    
     public BookingController() {
         super();
     }
@@ -33,6 +34,7 @@ public class BookingController extends HttpServlet {
     public void init() throws ServletException {
         bookingService = BookingService.getInstance();
         carService = CarService.getInstance();
+        driverService = DriverService.getInstance();
     }
 
     @Override
@@ -114,11 +116,11 @@ public class BookingController extends HttpServlet {
             if ("admin@gmail.com".equals(user.getEmail())) {
             	bookingList = bookingService.getAllBookings();
                 
-                // Fetch all available drivers
-                List<Driver> drivers = DriverService.getInstance().getAllDrivers();
-                
+               
+            	List<Driver> driverList = new ArrayList<>();
+            	driverList= driverService.getAllDrivers();
                 request.setAttribute("bookings", bookingList);
-                request.setAttribute("drivers", drivers);
+                request.setAttribute("drivers", driverList);
                 request.getRequestDispatcher("WEB-INF/view/adminBookings.jsp").forward(request, response);
             } else {
             	bookingList = bookingService.getBookingsByUser(user.getUserID());
@@ -197,10 +199,10 @@ public class BookingController extends HttpServlet {
             int bookingID = Integer.parseInt(request.getParameter("bookingID"));
             int driverID = Integer.parseInt(request.getParameter("driverID"));
 
-            // Assign driver to the booking
+           
             bookingService.assignDriver(bookingID, driverID);
 
-            // Update driver availability to "Unavailable"
+           
             DriverService.getInstance().updateDriverAvailability(driverID, "Unavailable");
 
             response.sendRedirect("booking?action=list");
@@ -223,7 +225,7 @@ public class BookingController extends HttpServlet {
             return;
         }
 
-        // Retrieve carID from request parameter and set it as an attribute
+       
         String carID = request.getParameter("carID");
         if (carID != null) {
             request.setAttribute("carID", carID);
