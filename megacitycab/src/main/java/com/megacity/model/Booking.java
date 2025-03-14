@@ -5,9 +5,7 @@ public class Booking {
     private int userID;
     private int carID;
     private String pickup;
-    
-
-	private String destination;
+    private String destination;
     private double fare;
     private String status;
     private int driverID; 
@@ -102,9 +100,5 @@ public class Booking {
 	}
 
 
-
-
-
-	
 
 }
