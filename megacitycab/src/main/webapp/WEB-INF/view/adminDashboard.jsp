@@ -87,6 +87,8 @@
             <button class="btn btn-manage-cars" onclick="location.href='car?action=list'">Manage Cars</button>
             <button class="btn btn-manage-drivers" onclick="location.href='driver?action=list'">Manage Drivers</button>
              <button class="btn btn-manage-drivers" onclick="location.href='booking?action=list'">Manage Bookings</button>
+              <button class="btn btn-manage-drivers" onclick="location.href='customer?action=list'">Register customers</button>
+            
             <button class="btn btn-logout" onclick="location.href='logout.jsp'">Logout</button>
         </div>
     </div>

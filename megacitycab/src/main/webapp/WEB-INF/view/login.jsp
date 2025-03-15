@@ -21,14 +21,14 @@
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 300px;
+            width: 500px;
         }
         .login-container h2 {
             text-align: center;
             margin-bottom: 20px;
         }
         .login-container input {
-            width: 100%;
+            width: 95%;
             padding: 10px;
             margin: 8px 0;
             border-radius: 5px;

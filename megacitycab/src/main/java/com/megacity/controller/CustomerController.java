@@ -91,7 +91,7 @@ public class CustomerController extends HttpServlet {
         int userID = 0;
         Customer customer = new Customer(userID, nic, name, email, password, address, phoneNumber);
         customerService.addCustomer(customer);
-                 response.sendRedirect("customers?action=list");
+                 response.sendRedirect("customer?action=list");
     }
 
 }

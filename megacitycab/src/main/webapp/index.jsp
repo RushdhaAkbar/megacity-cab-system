@@ -110,7 +110,7 @@
     </div>
 
     <script>
-        // You can add JavaScript here if needed
+        
         console.log("Welcome to the Vehicle Booking System!");
     </script>
 </body>
