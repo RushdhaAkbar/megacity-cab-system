@@ -61,10 +61,17 @@
         }
 
         .btn-manage-drivers {
+            background-color: #AA60C8;
+            color: white;
+        }
+.btn-manage-customers {
+            background-color: #BE5985;
+            color: white;
+        }
+        .btn-manage-bookings {
             background-color: #28a745;
             color: white;
         }
-
         .btn-manage-drivers:hover {
             background-color: #218838;
         }
@@ -73,6 +80,9 @@
             background-color: #dc3545;
             color: white;
             margin-top: 20px;
+            margin-left:150px;
+             width: 30%;
+             align-items:center;
         }
 
         .btn-logout:hover {
@@ -86,8 +96,8 @@
         <div class="btn-container">
             <button class="btn btn-manage-cars" onclick="location.href='car?action=list'">Manage Cars</button>
             <button class="btn btn-manage-drivers" onclick="location.href='driver?action=list'">Manage Drivers</button>
-             <button class="btn btn-manage-drivers" onclick="location.href='booking?action=list'">Manage Bookings</button>
-              <button class="btn btn-manage-drivers" onclick="location.href='customer?action=list'">Register customers</button>
+             <button class="btn btn-manage-bookings" onclick="location.href='booking?action=list'">Manage Bookings</button>
+              <button class="btn btn-manage-customers" onclick="location.href='customer?action=list'">Manage customers</button>
             
             <button class="btn btn-logout" onclick="location.href='logout.jsp'">Logout</button>
         </div>
