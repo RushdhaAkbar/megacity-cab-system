@@ -69,7 +69,7 @@
 
 <div class="navbar">
     <span>Welcome, ${loggedInUser.email}</span>
-    <a href="logout.jsp">Logout</a>
+   <a href="login?action=login" class="button">Logout</a>
      <a href="booking?action=list" class="book-button" style="background-color: #28a745;">My Bookings</a>
 </div>
 
